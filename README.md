@@ -52,7 +52,11 @@ sudo ./ch9102_udev.sh
 ```
 
 ####  cjson 安装
-将[**iFLYTEK_M260C_microphone_config/cJSON**]文件夹复制到主目录下，进入CJSON文件夹，输入如下指令完成安装
+首先通过github获取cJSON文件
+```bash
+git clone https://github.com/DaveGamble/cJSON.git
+```
+进入cJSON文件夹，输入如下指令完成安装
 ```bash
 mkdir build
 cd build
