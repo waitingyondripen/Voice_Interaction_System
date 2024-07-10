@@ -135,7 +135,7 @@ pip install wave
 
 ## FunASR_docker配置
 
-FunASR文件过大，因此本github项目中来，需要读者前往百度网盘自取
+FunASR文件过大，因此不放置于github项目中来，请读者前往百度网盘自取
 
 链接: https://pan.baidu.com/s/1GqFNuoQdyooyVrauHYeNiw?pwd=yjd4 提取码: yjd4 
 
