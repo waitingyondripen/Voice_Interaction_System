@@ -12,6 +12,7 @@
       - [麦克风串口配置](#麦克风串口配置)
       - [cjson 安装](#cjson-安装)
     - [运行环境配置](#运行环境配置)
+  - [FunASR\_docker配置](#funasr_docker配置)
   - [实际运行](#实际运行)
   - [报错解决](#报错解决)
 
@@ -45,6 +46,12 @@
 - **main.py**（主文件，需python运行该文件）
 
 ##  环境配置
+
+将本项目文件拷贝到主目录中
+
+```bash
+git clone https://github.com/waitingyondripen/Voice_Interaction_System.git
+```
 
 ### 麦克风M260C串口配置
 因本实验室采用科大讯飞M260C版六麦阵列，故需预先配置相关串口，且本实验室对麦克风阵列硬件配制稍作改动，因此非实验室配置者需自行参考麦克风的配置文档，并忽略以下串口配置内容。
@@ -125,6 +132,36 @@ pip install wave
 ```
 
 完成环境配置
+
+## FunASR_docker配置
+
+FunASR文件过大，因此本github项目中来，需要读者前往百度网盘自取
+
+链接: https://pan.baidu.com/s/1GqFNuoQdyooyVrauHYeNiw?pwd=yjd4 提取码: yjd4 
+
+提取完毕后，将FunASR移动到Voice_Interaction_System/文件夹下即可
+
+```bash
+sudo docker pull registry.cn-hangzhou.aliyuncs.com/funasr_repo/funasr:funasr-runtime-sdk-cpu-0.4.3
+
+sudo docker run \
+  -d \
+  -t \
+  -v /home/${user_name(需替换)}/Voice_Interaction_System/FunASR/funasr-runtime-resources/models:/workspace/models \
+  -p 10095:10095 \
+  --privileged=true \
+  --restart=on-failure:10 \
+  --name FunASR_offline \
+  registry.cn-hangzhou.aliyuncs.com/funasr_repo/funasr:funasr-runtime-sdk-cpu-0.4.3 \
+  /workspace/models/start_offline.sh
+```
+- 验证系统是否生效(optional)
+
+进入目录~/Voice_Interaction_System/FunASR/samples/html/static，双击打开index.html文件。输入服务地址 ws://127.0.0.1:10095。选择麦克风/offline。依次点击连接/开始/停止，完成一次语音识别。（首次连接服务器需要一定时间等待）
+
+<center>
+    <img src="./image/image.webp" alt="FunASR Demo示意图">
+</center>
 
 ## 实际运行
 运行时，确保在每个终端都执行了环境激活
