@@ -46,7 +46,7 @@ def listen():
             print("等待唤醒......")
             stream.stop_stream()
             wakeup()
-            playsound('./welcome.wav')
+            playsound('./wav_file/welcome.wav')
             print("  ")
             print("唤醒成功！")
             stream = p.open(format=FORMAT,
